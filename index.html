@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriShake ANDINO</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Encabezado / Navbar -->
+  <header class="header">
+    <div class="logo">
+      <img src="LOGO.JPG.png" alt="NutriShake ANDINO" class="logo-img">
+      <h1>NutriShake ANDINO</h1>
+    </div>
+    <nav class="nav">
+      <a href="#home">Inicio</a>
+      <a href="#clasicos">Clásicos</a>
+      <a href="#proteicos">Proteicos</a>
+      <a href="#superfoods">Superfoods</a>
+      <a href="#contacto">Contacto</a>
+      <span class="carrito-icono" onclick="toggleCarrito()">🛒 <span id="carrito-contador">0</span></span>
+    </nav>
+  </header>
+
+  <!-- Portada Principal -->
+  <section id="home" class="portada">
+    <div class="portada-content">
+      <h2>NutriShake ANDINO</h2>
+      <p>Energía y nutrición natural que define el estilo de vida de toda la familia</p>
+      <button onclick="scrollToSection('clasicos')">Ver Batidos</button>
+    </div>
+  </section>
+
+  <!-- Sección Batidos Clásicos -->
+  <section id="clasicos" class="category">
+    <h2>Batidos Clásicos</h2>
+    <p>Colección exclusiva 2026 · Sabor e Ingredientes Naturales</p>
+
+    <div class="products">
+      <div class="product-item">
+        <img src="FRESA.JPG" alt="Batido de Fresa Andina">
+        <h3>Fresa Andina</h3>
+        <div class="tallas"><span>Personal</span><span>Mediano</span><span>Familiar</span></div>
+        <p>S/ 12.00</p>
+        <button onclick="agregarAlCarrito('Batido Fresa Andina', 12.00)">Agregar al carrito</button>
+      </div>
+
+      <div class="product-item">
+        <img src="PLATANO.JPG" alt="Batido de Plátano y Maca">
+        <h3>Plátano & Maca</h3>
+        <div class="tallas"><span>Personal</span><span>Mediano</span><span>Familiar</span></div>
+        <p>S/ 14.00</p>
+        <button onclick="agregarAlCarrito('Batido Plátano & Maca', 14.00)">Agregar al carrito</button>
+      </div>
+
+      <div class="product-item">
+        <img src="MANGO.JPG" alt="Batido de Mango Silvestre">
+        <h3>Mango Silvestre</h3>
+        <div class="tallas"><span>Personal</span><span>Mediano</span><span>Familiar</span></div>
+        <p>S/ 13.50</p>
+        <button onclick="agregarAlCarrito('Batido Mango Silvestre', 13.50)">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Batidos Proteicos -->
+  <section id="proteicos" class="category">
+    <h2>Línea Proteica</h2>
+    <p>Potencia tus entrenamientos con lo mejor de los Andes</p>
+
+    <div class="products">
+      <div class="product-item">
+        <img src="Quinoa.jpg" alt="Protein Vainilla Quinoa">
+        <h3>Vainilla Quinoa Protein</h3>
+        <div class="tallas"><span>Mediano</span><span>Familiar</span></div>
+        <p>S/ 18.00</p>
+        <button onclick="agregarAlCarrito('Vainilla Quinoa Protein', 18.00)">Agregar al carrito</button>
+      </div>
+
+      <div class="product-item">
+        <img src="KIQUICHA.JPG" alt="Chocolate Kiwicha Power">
+        <h3>Chocolate Kiwicha Power</h3>
+        <div class="tallas"><span>Mediano</span><span>Familiar</span></div>
+        <p>S/ 19.50</p>
+        <button onclick="agregarAlCarrito('Chocolate Kiwicha Power', 19.50)">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Superfoods -->
+  <section id="superfoods" class="category">
+    <h2>Línea Superfoods</h2>
+    <p>Nutrición avanzada para el bienestar diario</p>
+
+    <div class="products">
+      <div class="product-item">
+        <img src="Antioxidante Berries.jpg" alt="Batido Antioxidante Berries">
+        <h3>Antioxidante Berries</h3>
+        <div class="tallas"><span>Personal</span><span>Mediano</span></div>
+        <p>S/ 16.00</p>
+        <button onclick="agregarAlCarrito('Antioxidante Berries', 16.00)">Agregar al carrito</button>
+      </div>
+
+      <div class="product-item">
+        <img src="Green Andino Detox.jpg" alt="Batido Green Andino Detox">
+        <h3>Green Andino Detox</h3>
+        <div class="tallas"><span>Personal</span><span>Mediano</span></div>
+        <p>S/ 15.00</p>
+        <button onclick="agregarAlCarrito('Green Andino Detox', 15.00)">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+<!-- COMPONENTE DEL CARRITO (Busca esta sección en tu HTML) -->
+  <div id="carrito" class="carrito">
+    <h2>🛒 Mi Carrito</h2>
+    <ul id="carrito-items" class="carrito-lista"></ul>
+    
+    <!-- REEMPLAZA SOLO ESTE BLOQUE PARA QUITAR EL SEGUNDO CARRITO -->
+    <div class="carrito-total">
+      <span>Total:</span>
+      <strong>S/ <span id="carrito-total">0.00</span></strong>
+    </div>
+    
+    <div class="carrito-botones">
+      <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar</button>
+      <button class="btn-comprar" onclick="comprarPorWhatsApp()">Comprar</button>
+    </div>
+  </div>
+  <!-- Pie de Página / Contacto -->
+  <footer id="contacto" class="contacto">
+    <div class="contacto-content">
+      <h2>Contáctanos</h2>
+      <p class="contacto-text">Estamos disponibles para atender tu pedido saludable</p>
+
+      <div class="contactos">
+        <a href="https://wa.me/51995820986" target="_blank" class="contactoson2">
+          <span class="contact-icon">💬</span>
+          <span class="contact-name">WhatsApp</span>
+        </a>
+        <a href="https://www.tiktok.com/@modayelegancia9" target="_blank" class="contactoson2">
+          <span class="contact-icon">🎵</span>
+          <span class="contact-name">TikTok</span>
+        </a>
+      </div>
+
+      <span class="footer-line"></span>
+      <p class="footer-copy">
+        &copy; 2026 NutriShake ANDINO · Todos los derechos reservados
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
